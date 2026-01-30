@@ -3,46 +3,77 @@
 
 <head>
   <title>Study Buddy</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Share+Tech&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Share+Tech&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  
+  <!-- Script -->
   <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+  <!-- Mobile-friendly -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 
 <body>
+
+  <!-- Header -->
   <header class="site-header">
-    <h1>Study<span><img src="{{ url_for('static', filename='logo-v4.png' ) }}" alt="" class="logo"></span>Buddy</h1>
+    <div class="header-wrapper">
+      <h1 class="brand-title">
+        Study
+        <span>
+          <img src="{{ url_for('static', filename='logo-v4.png') }}" alt="Logo" class="logo">
+        </span>
+        Buddy
+      </h1>
+    </div>
   </header>
+
+  <!-- Main -->
   <main class="main-content">
-    <div class="chat-container">
+    <div class="chat-container glass-card fade-in">
+
+      <!-- Chatbot Header -->
       <section class="chatbot-header">
         <figure>
-          <img src="{{ url_for('static', filename='logo-v4.png' ) }}" alt="" class="logo">
+          <img src="{{ url_for('static', filename='logo-v4.png') }}" alt="Chatbot Logo" class="logo chatbot-logo">
         </figure>
-        <h2>Study Buddy</h2>
+        <h2 class="chat-title">Your AI Study Buddy</h2>
+        <p class="chat-tagline">Ask anything, learn everything ✨</p>
       </section>
+
+      <!-- Messages -->
       <section class="messages">
         {% for message in chat_history %}
-        <div class="message-role {{ 'user' if message.role == 'user' else '' }}">
-          {{ message.role.capitalize() }}
-        </div>
-        <div class="{{ 'user-message' if message.role == 'user' else 'assistant-message'}}">
-          {{ message.content }}
+        <div class="message-block {{ 'is-user' if message.role == 'user' else 'is-assistant' }}">
+          <div class="role-label">{{ message.role.capitalize() }}</div>
+          <div class="message-bubble">
+            {{ message.content }}
+          </div>
         </div>
         {% endfor %}
       </section>
+
+      <!-- Input -->
       <section class="message-input-container">
         <form action="/chat" method="post">
-          <textarea name="message" placeholder="Ask anything..." autofocus required></textarea>
+          <textarea name="message" class="message-input" placeholder="Ask anything..." autofocus required></textarea>
+
           <div class="button-group">
-            <!-- todo add text but then hide it. There's a class in the css for .hidden -->
-            <button type="submit" id="send-btn"><img src="{{ url_for('static', filename='send-icon.png' ) }}" alt="Send prompt" class="send-icon"><span class="visually-hidden">Send prompt</span></button>
+            <button type="submit" id="send-btn" class="send-btn">
+              <img src="{{ url_for('static', filename='send-icon.png') }}" alt="Send" class="send-icon">
+              <span class="visually-hidden">Send prompt</span>
+            </button>
           </div>
         </form>
       </section>
+
     </div>
   </main>
 
