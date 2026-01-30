@@ -6,29 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Study Buddy</title>
 
-<<<<<<< HEAD
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
-    rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-
-  <!-- JS -->
-=======
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Share+Tech&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='main_css.css') }}" />
   
   <!-- Script -->
->>>>>>> c01a925bafb10b14a4d23d97c39214580fffd944
   <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 
   <!-- Mobile-friendly -->
@@ -38,32 +24,6 @@
 
 <body>
 
-<<<<<<< HEAD
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-inner">
-      <img src="{{ url_for('static', filename='logo-v4.png') }}" class="header-logo" alt="">
-      <h1 class="header-title">Study Buddy</h1>
-    </div>
-  </header>
-
-  <!-- MAIN CHAT UI -->
-  <main class="chat-wrapper">
-
-    <div class="chat-card">
-
-      <!-- Chatbot Banner -->
-      <div class="chat-banner">
-        <img src="{{ url_for('static', filename='logo-v4.png') }}" alt="Bot" class="banner-logo">
-        <h2>AI Study Buddy</h2>
-        <p>Your smart companion for learning anything ✨</p>
-      </div>
-
-      <!-- Chat Messages -->
-      <div class="chat-window">
-        {% for message in chat_history %}
-        <div class="message-row {{ 'me' if message.role == 'user' else 'bot' }}">
-=======
   <!-- Header -->
   <header class="site-header">
     <div class="header-wrapper">
@@ -95,23 +55,11 @@
         {% for message in chat_history %}
         <div class="message-block {{ 'is-user' if message.role == 'user' else 'is-assistant' }}">
           <div class="role-label">{{ message.role.capitalize() }}</div>
->>>>>>> c01a925bafb10b14a4d23d97c39214580fffd944
           <div class="message-bubble">
             {{ message.content }}
           </div>
         </div>
         {% endfor %}
-<<<<<<< HEAD
-      </div>
-
-      <!-- Chat Input -->
-      <form class="chat-input" action="/chat" method="POST">
-        <textarea name="message" placeholder="Type your question..." required></textarea>
-        <button type="submit" class="send-btn">
-          <img src="{{ url_for('static', filename='send-icon.png') }}" alt="">
-        </button>
-      </form>
-=======
       </section>
 
       <!-- Input -->
@@ -127,7 +75,6 @@
           </div>
         </form>
       </section>
->>>>>>> c01a925bafb10b14a4d23d97c39214580fffd944
 
     </div>
 
